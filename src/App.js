@@ -36,11 +36,11 @@ function App() {
           </Route>
         </Switch>
 
-        {/*<footer className="outer-footer-container">*/}
-        {/*  <div className="inner-container">*/}
-        {/*    © Jessica Rozendaal*/}
-        {/*  </div>*/}
-        {/*</footer>*/}
+        <footer className="outer-footer-container">
+          <div className="inner-container">
+            © Jessica Rozendaal
+          </div>
+        </footer>
 
       </>
   );
