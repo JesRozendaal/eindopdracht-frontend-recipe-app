@@ -3,6 +3,10 @@ import './Home.css';
 import Header from "../../components/header/Header";
 import Imageblock from "../../components/home/Imageblock";
 import Textblock from "../../components/home/Textblock";
+import Plate from "../../assets/icons/restaurant_plate_cutlery_food_icon_210114.png";
+import QuestionMark from "../../assets/photos/vraagteken.jpg";
+import InsideFridge from "../../assets/photos/istockphoto-842160124-612x612.jpg";
+import RecipeBook from "../../assets/photos/eggs-gc1c11a90f_1920.jpg";
 
 const Home = () => {
     return (
