@@ -27,6 +27,10 @@ ul {
     background: url('../../assets/photos/pasta-g6adc36e7b_1920.jpg') no-repeat center center fixed;
 }
 
+.header-recipe {
+    background: url('../../assets/photos/eggs-gc1c11a90f_1920.jpg') no-repeat center center fixed;
+}
+
 .outer-nav-container {
     position: fixed;
     width: 100%;
