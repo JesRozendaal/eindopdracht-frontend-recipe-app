@@ -35,6 +35,10 @@ ul {
     background: url('../../assets/photos/Login-Register.jpg') no-repeat center center fixed;
 }
 
+.header-profile {
+    background: url('../../assets/photos/20220411_122111.jpg') no-repeat center center fixed;
+}
+
 .outer-nav-container {
     position: fixed;
     width: 100%;
