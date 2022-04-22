@@ -10,7 +10,7 @@ const Recipe1 = ({nrOffRecipes}) => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const result = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=64b9d798657c4f318e70de4bdedc004b&number=${nrOffRecipes}&type=main course`);
+                const result = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=${nrOffRecipes}&type=main course`);
                 console.log(result.data);
                 setRecipeCard(result.data.recipes);
             }catch (e) {
