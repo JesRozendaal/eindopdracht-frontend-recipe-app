@@ -1,9 +1,13 @@
 import React from 'react';
+import './Subrecipe.css';
+import Recipe2 from "../../components/recipes/Recipe2";
+import Header from "../../components/header/Header";
 
 const Subrecipe = () => {
     return (
         <div>
-<h2>Test</h2>
+            <Header/>
+            <Recipe2/>
         </div>
     );
 };
