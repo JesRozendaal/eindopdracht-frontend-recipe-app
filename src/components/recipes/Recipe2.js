@@ -13,7 +13,7 @@ const Recipe2 = () => {
     useEffect(()=>{
         async function getData() {
             try {
-                const result = await axios.get(`https://api.spoonacular.com/recipes/324694/analyzedInstructions&apiKey=${process.env.REACT_APP_API_KEY}`);
+                const result = await axios.get(`https://api.spoonacular.com/recipes/632279/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`);
                 console.log(result.data);
                 setFullRecipe(result.data);
                 // console.log(result.data.analyzedInstructions[0].steps[1].step)
@@ -25,7 +25,26 @@ const Recipe2 = () => {
 
         return (
             <>
-                Test
+                {fullRecipe &&
+                <div className="outer-container">
+                    <div className="inner-container">
+                        <img src={fullRecipe.image} alt="dish"/>
+                        <p><img src={Clock} alt="clock" className="icons"/> {fullRecipe.readyInMinutes} min</p>
+                        <p><img src={Person} alt="person" className="icons"/> {fullRecipe.servings} persons</p>
+                        {/*nog een if statement maken voor person/persons!*/}
+
+                        <div className="container-instructions">
+                            <h3>Preparation</h3>
+
+                            <div className="container-ingredients-equipment">
+                                <h3>Ingredients</h3>
+
+                                <h3>Equipment</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
                 </>
     );
 };

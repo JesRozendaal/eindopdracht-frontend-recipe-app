@@ -6,7 +6,9 @@ import Header from "../../components/header/Header";
 const Subrecipe = () => {
     return (
         <div>
-            <Header/>
+            <Header
+            className="header-subrecipe"
+            />
             <Recipe2/>
         </div>
     );
