@@ -26,6 +26,10 @@ header {
     background: url('../../assets/photos/20220411_122111.jpg') no-repeat center center fixed;
 }
 
+.header-fridge {
+    background: url('../../assets/photos/ello-aeu9uzstcfs-unsplash-scaled.jpg') no-repeat center center fixed;
+}
+
 .title-container {
     width: 280px;
     height: 205px;

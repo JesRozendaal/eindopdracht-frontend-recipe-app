@@ -36,7 +36,7 @@ const LoginRegister = () => {
                                     />
                                 </label>
                                 <button>
-                                    <strong>Inloggen</strong>
+                                    <strong>Log in</strong>
                                 </button>
                             </form>
 
