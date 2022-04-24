@@ -40,3 +40,7 @@
     width: 25px;
     height: 25px;
 }
+
+.link-recipe {
+    text-decoration: none;
+}

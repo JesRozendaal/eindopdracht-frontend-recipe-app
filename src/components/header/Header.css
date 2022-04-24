@@ -1,7 +1,6 @@
 header {
-    /*position: relative;*/
-    width: 100%;
-    height: 700px;
+    flex-basis: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -9,19 +8,7 @@ header {
     background-size: cover;
 }
 
-ul {
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.nav-link {
-    color: #F2A56F;
-    font-size: 20px;
-    text-decoration: none;
-}
+/*position: relative;*/
 
 .header-home {
     background: url('../../assets/photos/pasta-g6adc36e7b_1920.jpg') no-repeat center center fixed;
@@ -37,16 +24,6 @@ ul {
 
 .header-profile {
     background: url('../../assets/photos/20220411_122111.jpg') no-repeat center center fixed;
-}
-
-.outer-nav-container {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #343A40;
 }
 
 .title-container {
