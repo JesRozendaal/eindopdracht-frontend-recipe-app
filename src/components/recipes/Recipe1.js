@@ -31,7 +31,7 @@ const Recipe1 = ({nrOffRecipes}) => {
                         <article  className="recipe-box">
                             <img src={posts.image} alt="recipe" width="500px" height="250px" className="image-recipes"/>
                             <span className="container-text">
-                                <h3><Link to="/recipes/:recipeId" className="link-recipe">{posts.title}</Link></h3>
+                                <h3><Link to={`/recipes/${posts.id}`} className="link-recipe">{posts.title}</Link></h3>
                                 <div className="text-recipes">
                                     <p><img src={Clock} alt="clock" className="icons"/>{posts.readyInMinutes} min</p>
                                     <p><img src={Person} alt="person" className="icons"/>{posts.servings} persons</p>
