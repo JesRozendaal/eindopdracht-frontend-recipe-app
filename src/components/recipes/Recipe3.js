@@ -26,7 +26,7 @@ const Recipe3 = () => {
         <>
             <h2>Your recipes</h2>
             {recipe &&
-                recipe.results.map((recipes) => {
+            recipe.results.map((recipes) => {
                     return(
                         <div className="container-recipe3">
                             <img src={recipes.image} alt="recipe" className="image-recipe3"/>
