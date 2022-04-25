@@ -99,3 +99,8 @@ footer {
 .link-back-home {
   text-decoration: none;
 }
+
+.home-container {
+  display: flex;
+  flex-basis: 1200px;
+}

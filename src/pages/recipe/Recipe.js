@@ -34,7 +34,7 @@ const Recipe = () => {
                                 Next
                             </strong>
                         </button>
-                        <Link to="/" className="link-back-home"><strong>Back</strong><img src={Home} alt="home icon" width="25px"/></Link>
+                        <Link to="/" className="link-back-home"><strong>Back</strong> <img src={Home} alt="home icon" width="25px"/></Link>
                     </div>
                 </div>
             </main>

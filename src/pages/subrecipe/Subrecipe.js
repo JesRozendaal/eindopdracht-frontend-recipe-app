@@ -83,7 +83,7 @@ const Subrecipe = () => {
                             {/*console.log(result.data.analyzedInstructions[0].steps[0].equipment[0].name)*/}
                         </div>
                     </div>
-                    <Link to="/" className="link-back-home"><strong>Back</strong><img src={Home} alt="home icon" width="25px"/></Link>
+                    <Link to="/" className="link-back-home"><strong>Back</strong> <img src={Home} alt="home icon" width="25px"/></Link>
                 </div>
             </div>
             }

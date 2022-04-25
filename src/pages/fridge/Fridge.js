@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import './Fridge.css';
-import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import Header from "../../components/header/Header";
+import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 
 const Fridge = () => {
@@ -29,13 +30,15 @@ const Fridge = () => {
             <main>
                 <div className="outer-container">
                     <div className="inner-container">
-                        <h2>Stop wasting food!</h2>
-                        <p>Just type the food left in your fridge in the bar below and receive recipes for a delicious meal.</p>
-                        <p>If you like to save your favorite recipes, just <Link to="/login-register">log in or register</Link></p>
+
+                        <TextAllPages title="Stop wasting food!">
+                            <p>Just type the food left in your fridge in the bar below and receive recipes for a delicious meal.</p>
+                            <p>If you like to save your favorite recipes, just <Link to="/login-register">log in or register</Link></p>
+                        </TextAllPages>
 
                         <form onSubmit={handleSubmit} className="fridge-form">
                             <label htmlFor="ingredients">
-                                What's in your fridge?
+                                <strong>What's in your fridge?</strong>
                                 <input
                                     type="text"
                                     id="ingredients"
@@ -57,14 +60,20 @@ const Fridge = () => {
                         <>
                             <h2>Your recipes</h2>
                             {recipe.data.map((recipes) => {
-                                return(
+                                return (
                                     <div className="container-recipe-fridge" key={recipes.id}>
                                         <img src={recipes.image} alt="recipe" className="image-recipe-fridge"/>
-                                        <h3><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
+                                        <section className="text-fridge">
+                                            <article>
+                                                <h3><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
+                                            </article>
+                                        </section>
                                     </div>
                                 )})}
                         </>}
-                        <Link to="/" className="link-back-home"><strong>Back</strong><img src={Home} alt="home icon" width="25px"/></Link>
+                        <div className="home-container">
+                            <Link to="/" className="link-back-home"><strong>Back</strong> <img src={Home} alt="home icon" width="25px"/></Link>
+                        </div>
                     </div>
                 </div>
             </main>
