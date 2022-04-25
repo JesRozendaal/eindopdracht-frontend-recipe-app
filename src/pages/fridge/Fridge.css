@@ -1,0 +1,23 @@
+.input-field-fridge {
+    width: 640px;
+    height: 40px;
+}
+
+.fridge-form {
+    background-color: #FEFEFB;
+    border-radius: 10px;
+    padding:10px;
+    flex-basis: 1200px;
+}
+
+.container-recipe-fridge {
+    border-radius: 10px;
+    display: flex;
+    background-color: #FEFEFB;
+    flex-basis: 1200px;
+    margin: 20px 5px 20px 5px;
+}
+
+.image-recipe-fridge {
+    border-radius: 10px 0 0 10px;
+}
