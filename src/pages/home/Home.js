@@ -3,6 +3,7 @@ import './Home.css';
 import Header from "../../components/header/Header";
 import Imageblock from "../../components/home/Imageblock";
 import Textblock from "../../components/home/Textblock";
+import TextAllPages from "../../components/text/TextAllPages";
 import Plate from "../../assets/icons/restaurant_plate_cutlery_food_icon_210114.png";
 import QuestionMark from "../../assets/photos/vraagteken.jpg";
 import InsideFridge from "../../assets/photos/istockphoto-842160124-612x612.jpg";
@@ -19,12 +20,17 @@ const Home = () => {
             <main>
                 <div className="outer-container">
                     <div className="inner-container">
-                        <img src={Plate} alt="plate-icon" width="150px"/>
-                        <h2>Welcome!</h2>
-                        <p>What will you be serving tonight?</p>
+
+                        <TextAllPages
+                            image={Plate}
+                            text="plate-icon"
+                            title="Welcome!"
+                        >
+                            <p>What will you be serving tonight?</p>
+                        </TextAllPages>
 
                         <div className="container-home-blocks">
-                            <section className="one=block">
+                            <section>
                                 <Textblock
                                     title="Having trouble deciding what to eat tonight?"
                                     text1="Don't worry!"
@@ -38,7 +44,7 @@ const Home = () => {
                                     className="link-home-decision"
                                 />
                             </section>
-                            <section className="one=block">
+                            <section>
                                 <Imageblock
                                     image={InsideFridge}
                                     alt="fridge"
@@ -51,7 +57,7 @@ const Home = () => {
                                     text1="Than try our recipe generator where you can fill in what food you've got left in your fridge."
                                 />
                             </section>
-                            <section className="one=block">
+                            <section>
                                 <Textblock
                                     title="Are you having a great day?"
                                     text1="Search through all our recipes and find what you want to eat tonight."
