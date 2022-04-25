@@ -27,15 +27,16 @@ const Recipe2 = () => {
                 {recipe &&
                     <>
                 <h2>Your recipes</h2>
-                    <div className="container-recipe2">
-                        <img src={recipe.data[0].image} alt="recipe"/>
-                    <h3><Link to={`/recipes/${recipe.data[0].id}`} className="link-recipe">{recipe.data[0].title}</Link>
-                    </h3>
-                    </div>
+                        {recipe.data.map((recipes) => {
+                            return(
+                                <div className="container-recipe2">
+                                    <img src={recipes.image} alt="recipe"/>
+                                    <h3><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
+                                </div>
+                            )})}
                     </>
                 }
             </>
-
     );
 };
 
