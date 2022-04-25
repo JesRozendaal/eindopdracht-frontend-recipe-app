@@ -30,6 +30,11 @@ header {
     background: url('../../assets/photos/ello-aeu9uzstcfs-unsplash-scaled.jpg') no-repeat center center fixed;
 }
 
+.header-decision-maker {
+    background: url('../../assets/photos/vraagteken.jpg') no-repeat center center fixed;
+    color: #F2A56F;
+}
+
 .title-container {
     width: 280px;
     height: 205px;

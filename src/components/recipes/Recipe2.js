@@ -26,12 +26,11 @@ const Recipe2 = () => {
             <>
                 {recipe &&
                     <>
-                <h2>Your recipes</h2>
-                    <div className="container-recipe2">
-                        <img src={recipe.data[0].image} alt="recipe"/>
-                    <h3><Link to={`/recipes/${recipe.data[0].id}`} className="link-recipe">{recipe.data[0].title}</Link>
-                    </h3>
-                    </div>
+                        <h2>Your recipes</h2>
+                        <div className="container-recipe2">
+                            <img src={recipe.data[0].image} alt="recipe" className="image-recipe2"/>
+                            <h3><Link to={`/recipes/${recipe.data[0].id}`} className="link-recipe">{recipe.data[0].title}</Link></h3>
+                        </div>
                     </>
                 }
             </>
