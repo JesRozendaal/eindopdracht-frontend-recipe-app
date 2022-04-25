@@ -28,8 +28,8 @@ const Recipe2 = () => {
                     <h2>Your recipes</h2>
                     {recipe.data.map((recipes) => {
                         return(
-                            <div className="container-recipe2">
-                                <img src={recipes.image} alt="recipe"/>
+                            <div className="container-recipe2" key={recipes.id}>
+                                <img src={recipes.image} alt="recipe" className="image-recipe2"/>
                                 <h3><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
                             </div>
                         )})}
