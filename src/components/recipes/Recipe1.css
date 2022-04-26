@@ -6,6 +6,8 @@
     flex-direction:column;
     flex-basis: 500px;
     width: 500px;
+    flex-grow: 0;
+    flex-shrink: 1;
 
 }
 
