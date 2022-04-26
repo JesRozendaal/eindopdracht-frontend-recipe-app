@@ -2,6 +2,13 @@ import React, {createContext, useState} from "react";
 import {useHistory} from "react-router-dom";
 
 //endpoint backend: https://frontend-educational-backend.herokuapp.com/
+//signup: /api/auth/signup
+// nodig: {
+//    "username": "piet",
+//    "email" : "piet@novi.nl",
+//    "password" : "123456",
+//    "role": ["user"]
+// }
 
 export const AuthContext = createContext({});
 

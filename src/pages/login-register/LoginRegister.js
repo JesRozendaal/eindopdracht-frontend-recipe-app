@@ -1,10 +1,11 @@
 import React, {useContext, useState} from 'react';
 import './LoginRegister.css';
+import axios from "axios";
+import {Link, useHistory} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
-import {Link} from "react-router-dom";
 import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
-import {AuthContext} from "../../context/AuthContext";
 
 const LoginRegister = () => {
     const {login} = useContext(AuthContext);
@@ -13,10 +14,37 @@ const LoginRegister = () => {
     const [emailRegister, setEmailRegister] = useState('');
     const [userNameRegister, setUserNameRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
+    const history = useHistory();
 
-    function handleSubmit() {
-        login();
-        console.log(userNameLogin)
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin',
+                {
+                    "username": userNameLogin,
+                    "password" : passwordLogin,
+                })
+            login();
+        } catch (e) {
+            console.error(e);
+        }
+
+    }
+
+    async function handleRegister(e) {
+        e.preventDefault();
+        try {
+            await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup',
+            {
+                "username": userNameRegister,
+                "email": emailRegister,
+                "password": passwordRegister,
+                "role": ["user"],
+            });
+            history.push("/profile");
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     return (
@@ -35,7 +63,10 @@ const LoginRegister = () => {
                         </TextAllPages>
 
                         <div className="container-forms">
-                            <form onSubmit={handleSubmit} className="login-register-form">
+                            <form
+                                onSubmit={handleSubmit}
+                                className="login-register-form"
+                            >
                                 <h4 className="title-login-register">Log in</h4>
                                 <label htmlFor="signin-username">
                                     <strong>
@@ -66,7 +97,10 @@ const LoginRegister = () => {
                                 </button>
                             </form>
 
-                            <form className="login-register-form">
+                            <form
+                                onSubmit={handleRegister}
+                                className="login-register-form"
+                            >
                                 <h4 className="title-login-register">Register</h4>
                                 <label htmlFor="register-username">
                                     <strong>
@@ -101,9 +135,12 @@ const LoginRegister = () => {
                                         value={passwordRegister}
                                     />
                                 </label>
-                                <button>
+                                <button
+                                type="submit"
+                                >
                                     Register
                                 </button>
+                                <p>After you register you have to log in!</p>
                             </form>
                         </div>
                         <div className="home-container">
