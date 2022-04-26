@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './LoginRegister.css';
 import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
 import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
+import {AuthContext} from "../../context/AuthContext";
 
 const LoginRegister = () => {
+    const {login} = useContext(AuthContext);
+
+    function handleSubmit() {
+        login();
+    }
+
     return (
         <div>
             <Header
@@ -22,7 +29,7 @@ const LoginRegister = () => {
                         </TextAllPages>
 
                         <div className="container-forms">
-                            <form className="login-register-form">
+                            <form onSubmit={handleSubmit} className="login-register-form">
                                 <h4 className="title-login-register">Log in</h4>
                                 <label htmlFor="signin-username">
                                     <strong>
@@ -42,7 +49,9 @@ const LoginRegister = () => {
                                         id="signin-password"
                                     />
                                 </label>
-                                <button>
+                                <button
+                                type="submit"
+                                >
                                     Log in
                                 </button>
                             </form>
