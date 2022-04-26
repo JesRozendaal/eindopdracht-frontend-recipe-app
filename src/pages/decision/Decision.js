@@ -2,7 +2,6 @@ import React from 'react';
 import './Decision.css';
 import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
-import Recipe3 from "../../components/recipes/Recipe3";
 import SadSmiley from "../../assets/icons/sad_mood_icon_211218.png";
 import LessSadSmiley from "../../assets/icons/confuzed_mood_icon_211412.png";
 import NeutralSmiley from "../../assets/icons/empty_mood_icon_211384.png";
@@ -102,7 +101,7 @@ const Decision = () => {
                             <button type="button">Search</button>
                         </form>
 
-                        {/*<Recipe3/>*/}
+
                     </div>
                 </div>
             </main>

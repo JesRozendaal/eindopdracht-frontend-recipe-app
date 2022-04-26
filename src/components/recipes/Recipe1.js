@@ -1,31 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import './Recipe1.css';
 import axios from "axios";
-import Clock from "../../assets/icons/clock_96305.png";
-import Person from "../../assets/icons/favorite_person_icon_216781.png";
 import {Link} from "react-router-dom";
+import RecipeTimePersons from "./RecipeTimePersons";
 
-const Recipe1 = ({nrOffRecipes}) => {
+const Recipe1 = ({nrOffRecipes, offset}) => {
     const[recipeCard, setRecipeCard] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const result = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=${nrOffRecipes}&tags=main course`);
+                const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=${nrOffRecipes}&offset=${offset}&type=main course&apiKey=${process.env.REACT_APP_API_KEY}`);
                 console.log(result.data);
-                setRecipeCard(result.data.recipes);
+                setRecipeCard(result.data);
             }catch (e) {
                 console.error(e);
             }
         }
         fetchData();
-    },[nrOffRecipes]);
+    },[nrOffRecipes, offset]);
 
     return (
 
         <div className="container-recipes">
             {recipeCard&&
-            recipeCard.map((posts) => {
+            recipeCard.results.map((posts) => {
                 return (
                     <section key={posts.id}>
                         <article  className="recipe-box">
@@ -33,8 +32,9 @@ const Recipe1 = ({nrOffRecipes}) => {
                             <span className="container-text">
                                 <h3><Link to={`/recipes/${posts.id}`} className="link-recipe">{posts.title}</Link></h3>
                                 <div className="text-recipes">
-                                    <p><img src={Clock} alt="clock" className="icons"/>{posts.readyInMinutes} min</p>
-                                    <p><img src={Person} alt="person" className="icons"/>{posts.servings} persons</p>
+                                    <RecipeTimePersons
+                                        id={posts.id}
+                                    />
                                 </div>
                             </span>
                         </article>
