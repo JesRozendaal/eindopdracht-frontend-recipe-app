@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import './LoginRegister.css';
 import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
@@ -8,9 +8,15 @@ import {AuthContext} from "../../context/AuthContext";
 
 const LoginRegister = () => {
     const {login} = useContext(AuthContext);
+    const [userNameLogin, setUserNameLogin] = useState('');
+    const [passwordLogin, setPasswordLogin] = useState('');
+    const [emailRegister, setEmailRegister] = useState('');
+    const [userNameRegister, setUserNameRegister] = useState('');
+    const [passwordRegister, setPasswordRegister] = useState('');
 
     function handleSubmit() {
         login();
+        console.log(userNameLogin)
     }
 
     return (
@@ -38,6 +44,8 @@ const LoginRegister = () => {
                                     <input
                                         type="text"
                                         id="signin-username"
+                                        onChange={(e) => setUserNameLogin(e.target.value)}
+                                        value={userNameLogin}
                                     />
                                 </label>
                                 <label htmlFor="signin-password">
@@ -47,6 +55,8 @@ const LoginRegister = () => {
                                     <input
                                         type="password"
                                         id="signin-password"
+                                        onChange={(e) => setPasswordLogin(e.target.value)}
+                                        value={passwordLogin}
                                     />
                                 </label>
                                 <button
@@ -65,6 +75,8 @@ const LoginRegister = () => {
                                     <input
                                         type="text"
                                         id="register-username"
+                                        onChange={(e) => setUserNameRegister(e.target.value)}
+                                        value={userNameRegister}
                                     />
                                 </label>
                                 <label htmlFor="register-email">
@@ -74,6 +86,8 @@ const LoginRegister = () => {
                                     <input
                                         type="email"
                                         id="register-email"
+                                        onChange={(e) => setEmailRegister(e.target.value)}
+                                        value={emailRegister}
                                     />
                                 </label>
                                 <label htmlFor="register-password">
@@ -83,6 +97,8 @@ const LoginRegister = () => {
                                     <input
                                         type="password"
                                         id="register-password"
+                                        onChange={(e) => setPasswordRegister(e.target.value)}
+                                        value={passwordRegister}
                                     />
                                 </label>
                                 <button>

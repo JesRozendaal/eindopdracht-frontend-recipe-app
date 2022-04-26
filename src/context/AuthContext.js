@@ -1,26 +1,37 @@
 import React, {createContext, useState} from "react";
 import {useHistory} from "react-router-dom";
 
+//endpoint backend: https://frontend-educational-backend.herokuapp.com/
+
 export const AuthContext = createContext({});
 
 function AuthContextProvider ({children}) {
-    const [isAuth, toggleIsAuth] = useState(false);
+    const [isAuth, toggleIsAuth] = useState({
+        isAuth: false,
+        user: null,
+    });
     const history = useHistory();
 
     function signIn() {
-        toggleIsAuth(true);
+        toggleIsAuth({
+            ...isAuth,
+            isAuth: true,
+        });
         console.log("de gebruiker is ingelogd");
         history.push("/profile");
     }
 
     function signOut() {
-        toggleIsAuth(false);
+        toggleIsAuth({
+            ...isAuth,
+            isAuth: false,
+        });
         console.log("de gebruiker is uitgelogd");
-        history.push("/");
     }
 
     const data = {
-        auth: isAuth,
+        auth: isAuth.isAuth,
+        user: isAuth.user,
         login: signIn,
         logout: signOut,
     }

@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
 import './App.css';
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import LoginRegister from "./pages/login-register/LoginRegister";
@@ -8,8 +8,11 @@ import Recipe from "./pages/recipe/Recipe";
 import Subrecipe from "./pages/subrecipe/Subrecipe";
 import Decision from "./pages/decision/Decision";
 import Fridge from "./pages/fridge/Fridge";
+import {AuthContext} from "./context/AuthContext";
 
 function App() {
+  const {auth} = useContext(AuthContext);
+
   return (
       <>
         <Switch>
@@ -17,7 +20,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/profile">
-            <Profile />
+            {auth ? <Profile /> : <Redirect to="/" />}
           </Route>
           <Route path="/login-register">
             <LoginRegister />
