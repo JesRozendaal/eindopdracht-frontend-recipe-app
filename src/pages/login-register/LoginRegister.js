@@ -2,6 +2,7 @@ import React from 'react';
 import './LoginRegister.css';
 import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
+import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 
 const LoginRegister = () => {
@@ -15,61 +16,74 @@ const LoginRegister = () => {
             <main>
                 <div className="outer-container">
                     <div className="inner-container">
-                        <p>Save your favorite recipes and always have them on hand.</p>
-                        <p>Log in or register here!</p>
+                        <TextAllPages>
+                            <p>Save your favorite recipes and always have them on hand.</p>
+                            <p>Log in or register here!</p>
+                        </TextAllPages>
 
                         <div className="container-forms">
                             <form className="login-register-form">
-                                <h4>Log in</h4>
+                                <h4 className="title-login-register">Log in</h4>
                                 <label htmlFor="signin-username">
-                                    <strong>Username</strong>
+                                    <strong>
+                                        Username
+                                    </strong>
                                     <input
                                         type="text"
                                         id="signin-username"
                                     />
                                 </label>
                                 <label htmlFor="signin-password">
-                                    <strong>Password</strong>
+                                    <strong>
+                                        Password
+                                    </strong>
                                     <input
                                         type="password"
                                         id="signin-password"
                                     />
                                 </label>
                                 <button>
-                                    <strong>Log in</strong>
+                                    Log in
                                 </button>
                             </form>
 
                             <form className="login-register-form">
-                                <h4>Register</h4>
+                                <h4 className="title-login-register">Register</h4>
                                 <label htmlFor="register-username">
-                                    <strong>Username</strong>
+                                    <strong>
+                                        Username
+                                    </strong>
                                     <input
                                         type="text"
                                         id="register-username"
                                     />
                                 </label>
                                 <label htmlFor="register-email">
-                                    <strong>E-mail address</strong>
+                                    <strong>
+                                        E-mail address
+                                    </strong>
                                     <input
                                         type="email"
                                         id="register-email"
                                     />
                                 </label>
                                 <label htmlFor="register-password">
-                                    <strong>Password</strong>
+                                    <strong>
+                                        Password
+                                    </strong>
                                     <input
                                         type="password"
                                         id="register-password"
                                     />
                                 </label>
                                 <button>
-                                    <strong>Register</strong>
+                                    Register
                                 </button>
                             </form>
                         </div>
-
-                        <Link to="/" className="link-back-home"><strong>Back</strong><img src={Home} alt="home icon" width="25px"/></Link>
+                        <div className="home-container">
+                            <Link to="/" className="link-back-home"><strong>Back</strong><img src={Home} alt="home icon" width="25px"/></Link>
+                        </div>
                     </div>
                 </div>
             </main>

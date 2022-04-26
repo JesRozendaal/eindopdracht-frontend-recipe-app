@@ -1,9 +1,11 @@
 .login-register-form {
+    display: flex;
+    flex-direction: column;
     background-color: #FEFEFB;
     border-radius: 10px;
     box-shadow: 3px 3px 4px #343A40;
-    width: 500px;
-    height: 300px;
+    flex-basis: 500px;
+    /*height: 300px;*/
 }
 
 .container-forms {
@@ -17,4 +19,8 @@
     flex-wrap: wrap;
     flex-grow: 0;
     flex-shrink: 1;
+}
+
+.title-login-register {
+    margin: 20px;
 }
