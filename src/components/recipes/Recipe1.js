@@ -11,7 +11,6 @@ const Recipe1 = ({nrOffRecipes, offset}) => {
         async function fetchData() {
             try {
                 const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=${nrOffRecipes}&offset=${offset}&type=main course&apiKey=${process.env.REACT_APP_API_KEY}`);
-                console.log(result.data);
                 setRecipeCard(result.data);
             }catch (e) {
                 console.error(e);

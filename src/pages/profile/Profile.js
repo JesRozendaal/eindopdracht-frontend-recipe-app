@@ -19,6 +19,7 @@ const Profile = () => {
 
                         <Recipe1
                             nrOffRecipes="4"
+                            offset="0"
                         />
 
                         <h2>My details</h2>
