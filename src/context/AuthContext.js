@@ -1,14 +1,6 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
-
-//endpoint backend: https://frontend-educational-backend.herokuapp.com/
-//signup: /api/auth/signup
-// nodig: {
-//    "username": "piet",
-//    "email" : "piet@novi.nl",
-//    "password" : "123456",
-//    "role": ["user"]
-// }
+import axios from "axios";
 
 export const AuthContext = createContext({});
 
@@ -16,24 +8,71 @@ function AuthContextProvider ({children}) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
+        status: 'pending',
     });
     const history = useHistory();
 
-    function signIn() {
-        toggleIsAuth({
-            ...isAuth,
-            isAuth: true,
-        });
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            getUserData(token);
+        } else {
+            toggleIsAuth({
+                isAuth: false,
+                user: null,
+                status: "done",
+            });
+        }
+    }, []);
+
+    function signIn(JWT) {
+        localStorage.setItem("token", JWT);
+        getUserData(JWT, './profile');
         console.log("de gebruiker is ingelogd");
-        history.push("/profile");
     }
 
     function signOut() {
         toggleIsAuth({
             ...isAuth,
             isAuth: false,
+            user: null,
+            status: "done",
         });
+        localStorage.clear();
         console.log("de gebruiker is uitgelogd");
+        history.push("/");
+    }
+
+    async function getUserData(token, redirectUrl) {
+        try {
+            const result = await axios.get('https://frontend-educational-backend.herokuapp.com/api/user',
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    }
+                });
+            toggleIsAuth({
+                ...isAuth,
+                isAuth:true,
+                user: {
+                    username: result.data.username,
+                    email: result.data.email,
+                },
+                status: "done",
+            })
+            if (redirectUrl) {
+                history.push(redirectUrl);
+            }
+        } catch(e) {
+            console.error(e);
+            toggleIsAuth({
+                isAuth: false,
+                user: null,
+                status: "done",
+            });
+        }
     }
 
     const data = {
@@ -45,10 +84,9 @@ function AuthContextProvider ({children}) {
 
     return (
     <AuthContext.Provider value={data}>
-        {children}
+        {isAuth.status === "done" ? children : <h2>Loading....</h2>}
     </AuthContext.Provider>
 )
-
 }
 
 export default AuthContextProvider;

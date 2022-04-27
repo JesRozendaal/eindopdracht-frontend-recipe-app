@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import './LoginRegister.css';
 import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
 import TextAllPages from "../../components/text/TextAllPages";
@@ -14,17 +14,16 @@ const LoginRegister = () => {
     const [emailRegister, setEmailRegister] = useState('');
     const [userNameRegister, setUserNameRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
-    const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin',
+            const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin',
                 {
                     "username": userNameLogin,
                     "password" : passwordLogin,
                 })
-            login();
+            login(result.data.accessToken);
         } catch (e) {
             console.error(e);
         }
@@ -41,7 +40,7 @@ const LoginRegister = () => {
                 "password": passwordRegister,
                 "role": ["user"],
             });
-            history.push("/profile");
+            console.log("registered with success!");
         } catch (e) {
             console.error(e);
         }
@@ -144,7 +143,15 @@ const LoginRegister = () => {
                             </form>
                         </div>
                         <div className="home-container">
-                            <Link to="/" className="link-back-home"><strong>Back</strong><img src={Home} alt="home icon" width="25px"/></Link>
+                            <Link
+                                to="/"
+                                className="link-back-home"
+                            >
+                                <strong>
+                                    Back
+                                </strong>
+                                <img src={Home} alt="home icon" width="25px"/>
+                            </Link>
                         </div>
                     </div>
                 </div>
