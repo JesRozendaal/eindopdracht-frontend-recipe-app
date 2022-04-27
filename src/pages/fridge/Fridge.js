@@ -66,7 +66,7 @@ const Fridge = () => {
                                         <img src={recipes.image} alt="recipe" className="image-recipe-fridge"/>
                                         <section className="text-fridge">
                                             <article>
-                                                <h3><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
+                                                <h3 className="title-fridge-recipe"><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
                                                 <div className="text-recipes">
                                                     <RecipeTimePersons
                                                         id={recipes.id}
