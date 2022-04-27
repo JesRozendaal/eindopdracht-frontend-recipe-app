@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "../../components/header/Header";
 import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
+import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
 
 const Fridge = () => {
     const[ingredients, setIngredients] = useState('');
@@ -66,6 +67,11 @@ const Fridge = () => {
                                         <section className="text-fridge">
                                             <article>
                                                 <h3><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
+                                                <div className="text-recipes">
+                                                    <RecipeTimePersons
+                                                        id={recipes.id}
+                                                    />
+                                                </div>
                                             </article>
                                         </section>
                                     </div>
