@@ -30,7 +30,6 @@ function AuthContextProvider ({children}) {
     function signIn(JWT) {
         localStorage.setItem("token", JWT);
         getUserData(JWT, './profile');
-        console.log("de gebruiker is ingelogd");
     }
 
     function signOut() {
@@ -41,7 +40,6 @@ function AuthContextProvider ({children}) {
             status: "done",
         });
         localStorage.clear();
-        console.log("de gebruiker is uitgelogd");
         history.push("/");
     }
 

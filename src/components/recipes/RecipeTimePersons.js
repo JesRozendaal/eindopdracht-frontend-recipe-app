@@ -11,7 +11,6 @@ const RecipeTimePersons = ({id}) => {
         async function fetchData() {
             try {
                 const result = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`);
-                console.log(result.data);
                 setRecipe(result.data);
             }catch (e) {
                 console.error(e);

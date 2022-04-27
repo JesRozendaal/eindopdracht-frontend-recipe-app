@@ -67,21 +67,21 @@ const LoginRegister = () => {
                                 className="login-register-form"
                             >
                                 <h4 className="title-login-register">Log in</h4>
-                                <label htmlFor="signin-username">
-                                    <strong>
-                                        Username
-                                    </strong>
-                                    <input
-                                        type="text"
-                                        id="signin-username"
-                                        onChange={(e) => setUserNameLogin(e.target.value)}
+                                <strong>
+                                    Username
+                                </strong>
+                                    <label htmlFor="signin-username">
+                                        <input
+                                            type="text"
+                                            id="signin-username"
+                                            onChange={(e) => setUserNameLogin(e.target.value)}
                                         value={userNameLogin}
                                     />
                                 </label>
+                                <strong>
+                                    Password
+                                </strong>
                                 <label htmlFor="signin-password">
-                                    <strong>
-                                        Password
-                                    </strong>
                                     <input
                                         type="password"
                                         id="signin-password"
@@ -89,6 +89,7 @@ const LoginRegister = () => {
                                         value={passwordLogin}
                                     />
                                 </label>
+
                                 <button
                                 type="submit"
                                 >
@@ -101,10 +102,10 @@ const LoginRegister = () => {
                                 className="login-register-form"
                             >
                                 <h4 className="title-login-register">Register</h4>
+                                <strong>
+                                    Username
+                                </strong>
                                 <label htmlFor="register-username">
-                                    <strong>
-                                        Username
-                                    </strong>
                                     <input
                                         type="text"
                                         id="register-username"
@@ -112,10 +113,10 @@ const LoginRegister = () => {
                                         value={userNameRegister}
                                     />
                                 </label>
+                                <strong>
+                                    E-mail address
+                                </strong>
                                 <label htmlFor="register-email">
-                                    <strong>
-                                        E-mail address
-                                    </strong>
                                     <input
                                         type="email"
                                         id="register-email"
@@ -123,15 +124,16 @@ const LoginRegister = () => {
                                         value={emailRegister}
                                     />
                                 </label>
+                                <strong>
+                                    Password
+                                </strong>
                                 <label htmlFor="register-password">
-                                    <strong>
-                                        Password
-                                    </strong>
                                     <input
                                         type="password"
                                         id="register-password"
                                         onChange={(e) => setPasswordRegister(e.target.value)}
                                         value={passwordRegister}
+                                        placeholder="Use a minimum of 6 characters"
                                     />
                                 </label>
                                 <button
@@ -139,7 +141,7 @@ const LoginRegister = () => {
                                 >
                                     Register
                                 </button>
-                                <p>After you register you have to log in!</p>
+                                <p className="warning">After you register you have to log in!</p>
                             </form>
                         </div>
                         <div className="home-container">
