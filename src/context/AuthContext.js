@@ -1,6 +1,7 @@
 import React, {createContext, useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
+import isTokenValid from "../helpers/isTokenValid";
 
 export const AuthContext = createContext({});
 
@@ -15,7 +16,7 @@ function AuthContextProvider ({children}) {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        if (token) {
+        if (token && isTokenValid(token)) {
             getUserData(token);
         } else {
             toggleIsAuth({
