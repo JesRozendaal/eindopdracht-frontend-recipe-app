@@ -27,7 +27,6 @@ const LoginRegister = () => {
         } catch (e) {
             console.error(e);
         }
-
     }
 
     async function handleRegister(e) {

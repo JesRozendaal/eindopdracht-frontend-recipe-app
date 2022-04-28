@@ -27,7 +27,7 @@ const Recipe1 = ({nrOffRecipes, offset}) => {
                 return (
                     <section key={posts.id}>
                         <article  className="recipe-box">
-                            <img src={posts.image} alt="recipe" width="500px" height="250px" className="image-recipes"/>
+                            <img src={posts.image} alt="recipe"  width="500px" height="250px" className="image-recipes"/>
                             <span className="container-text">
                                 <h3><Link to={`/recipes/${posts.id}`} className="link-recipe">{posts.title}</Link></h3>
                                 <div className="text-recipes">
