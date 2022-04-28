@@ -40,7 +40,6 @@ function AuthContextProvider ({children}) {
             status: "done",
         });
         localStorage.clear();
-        history.push("/");
     }
 
     async function getUserData(token, redirectUrl) {
