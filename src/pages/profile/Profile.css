@@ -1,7 +1,10 @@
 .container-user-details {
     background-color: #FEFEFB;
     border-radius: 10px;
-    width: 640px;
-    height: 220px;
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    box-shadow: 3px 3px 4px #343A40;
+    margin: 20px 5px 20px 5px;
 }
