@@ -36,7 +36,9 @@ const Fridge = () => {
                 <div className="outer-container">
                     <div className="inner-container">
 
-                        <TextAllPages title="Stop wasting food!">
+                        <TextAllPages
+                            title="Stop wasting food!"
+                        >
                             <p>Just type the food left in your fridge in the bar below and receive recipes for a delicious meal.</p>
                             <p>If you like to save your favorite recipes, just <Link to="/login-register">log in or register</Link></p>
                         </TextAllPages>

@@ -77,6 +77,7 @@ const Profile = () => {
                                     <input
                                         type="text"
                                         id="change-password"
+                                        placeholder="Use a minimum of 6 characters"
                                         onChange={(e) => setPassword(e.target.value)}
                                         value={password}
                                     />
