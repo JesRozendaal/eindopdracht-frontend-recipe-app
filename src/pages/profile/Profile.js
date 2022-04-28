@@ -59,10 +59,10 @@ const Profile = () => {
                     <div className="inner-container">
                         <h2>My favorite recipes</h2>
 
-                        {/*<Recipe1*/}
-                        {/*    nrOffRecipes="4"*/}
-                        {/*    offset="0"*/}
-                        {/*/>*/}
+                        <Recipe1
+                            nrOffRecipes="4"
+                            offset="0"
+                        />
 
                         <h2>My details</h2>
 
