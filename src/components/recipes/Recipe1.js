@@ -6,14 +6,17 @@ import RecipeTimePersons from "./RecipeTimePersons";
 
 const Recipe1 = ({nrOffRecipes, offset}) => {
     const[recipeCard, setRecipeCard] = useState(null);
+    const [error, toggleError] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
+            toggleError(false);
             try {
                 const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=${nrOffRecipes}&offset=${offset}&type=main course&apiKey=${process.env.REACT_APP_API_KEY}`);
                 setRecipeCard(result.data);
             }catch (e) {
                 console.error(e);
+                toggleError(true);
             }
         }
         fetchData();
@@ -22,6 +25,9 @@ const Recipe1 = ({nrOffRecipes, offset}) => {
     return (
 
         <div className="container-recipes">
+            {error&&
+            <h2 className="error">Oops... Something went wrong</h2>
+            }
             {recipeCard&&
             recipeCard.results.map((posts) => {
                 return (

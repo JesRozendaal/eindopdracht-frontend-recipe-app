@@ -6,18 +6,22 @@ import Header from "../../components/header/Header";
 import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
+import Error from "../../assets/photos/mistake-ge1eac774b_1920.jpg";
 
 const Fridge = () => {
     const[ingredients, setIngredients] = useState('');
     const[recipe, setRecipe] = useState(null);
+    const [error, toggleError] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
         try {
             const result = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=10&apiKey=${process.env.REACT_APP_API_KEY}`);
             console.log(result);
             setRecipe(result);
         } catch(e){console.error(e);
+            toggleError(true);
         }
     }
 
@@ -56,6 +60,15 @@ const Fridge = () => {
                                 Search
                             </button>
                         </form>
+
+                        {error &&
+                        <div className="outer-container">
+                            <div className="inner-container">
+                                <img src={Error} alt="error" width="400px" className="image-subrecipe"/>
+                                <h2 className="error">Oops... Something went wrong</h2>
+                            </div>
+                        </div>
+                        }
 
                         {recipe &&
                         <>
