@@ -1,0 +1,10 @@
+button {
+    color: #343A40;
+    background-color: #F2A56F;
+    border-radius: 10px;
+    border: 1px solid #343A40;
+    font-weight: 700;
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+}

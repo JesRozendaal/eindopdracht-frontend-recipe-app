@@ -7,6 +7,7 @@ import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
 import Error from "../../assets/photos/mistake-ge1eac774b_1920.jpg";
+import Button from "../../components/buttons/Button";
 
 const Fridge = () => {
     const[ingredients, setIngredients] = useState('');
@@ -55,12 +56,11 @@ const Fridge = () => {
                                     value={ingredients}
                                 />
                             </label>
-                            <button
-                                type="submit"
-                                disabled={!ingredients}
-                            >
-                                Search
-                            </button>
+                            <Button
+                            type="submit"
+                            name="Search"
+                            disabled={!ingredients}
+                            />
                         </form>
 
                         {error &&
