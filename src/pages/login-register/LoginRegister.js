@@ -143,7 +143,7 @@ const LoginRegister = () => {
                                     Register
                                 </button>
                                 <p className="warning">After you register you have to log in!</p>
-                                {registered&&
+                                {registered &&
                                 <h4>You are registered!</h4>
                                 }
                             </form>

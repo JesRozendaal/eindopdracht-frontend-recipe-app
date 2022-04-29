@@ -12,10 +12,15 @@ const Profile = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatedPassword, setRepeatedPassword] = useState('');
+    const [changePassword, toggleChangePassword] =useState(false);
+    const [changeEmail, toggleChangeEmail] =useState(false);
+    const [error, toggleError] = useState(false);
 
     async function handleSubmit(e) {
         const token = localStorage.getItem('token');
         e.preventDefault();
+        toggleChangePassword(false);
+        toggleError(false);
         try {
             await axios.put('https://frontend-educational-backend.herokuapp.com/api/user',
                 {
@@ -26,15 +31,18 @@ const Profile = () => {
                         "Authorization": `Bearer ${token}`,
                     },
                 })
-            console.log("The change was successful!");
+            toggleChangePassword(true);
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
     }
 
     async function handleEmailChange(e) {
         const token = localStorage.getItem('token');
         e.preventDefault();
+        toggleChangeEmail(false);
+        toggleError(false);
         try {
              await axios.put('https://frontend-educational-backend.herokuapp.com/api/user',
                  {
@@ -44,9 +52,10 @@ const Profile = () => {
                          "Authorization": `Bearer ${token}`,
                      },
                  })
-            console.log("The change was successful!");
+            toggleChangeEmail(true);
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
     }
 
@@ -100,6 +109,12 @@ const Profile = () => {
                                 >
                                     Save
                                 </button>
+                                {error &&
+                                <h4>Nothing changed, please try again....</h4>
+                                }
+                                {changePassword &&
+                                <h4>The change was successful!</h4>
+                                }
                             </form>
                             <p><strong>E-mail address:</strong> {user.email}</p>
                             <form onSubmit={handleEmailChange}>
@@ -119,6 +134,12 @@ const Profile = () => {
                                 >
                                     Save
                                 </button>
+                                {error &&
+                                <h4>Nothing changed, please try again....</h4>
+                                }
+                                {changeEmail &&
+                                <h4>The change was successful!</h4>
+                                }
                             </form>
                         </div>
 
