@@ -14,6 +14,7 @@ const LoginRegister = () => {
     const [emailRegister, setEmailRegister] = useState('');
     const [userNameRegister, setUserNameRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
+    const [registered, toggleRegistered] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -31,6 +32,7 @@ const LoginRegister = () => {
 
     async function handleRegister(e) {
         e.preventDefault();
+        toggleRegistered(false);
         try {
             await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup',
             {
@@ -39,7 +41,7 @@ const LoginRegister = () => {
                 "password": passwordRegister,
                 "role": ["user"],
             });
-            console.log("registered with success!");
+            toggleRegistered(true);
         } catch (e) {
             console.error(e);
         }
@@ -74,7 +76,7 @@ const LoginRegister = () => {
                                             type="text"
                                             id="signin-username"
                                             onChange={(e) => setUserNameLogin(e.target.value)}
-                                        value={userNameLogin}
+                                            value={userNameLogin}
                                     />
                                 </label>
                                 <strong>
@@ -141,6 +143,9 @@ const LoginRegister = () => {
                                     Register
                                 </button>
                                 <p className="warning">After you register you have to log in!</p>
+                                {registered&&
+                                <h4>You are registered!</h4>
+                                }
                             </form>
                         </div>
                         <div className="home-container">

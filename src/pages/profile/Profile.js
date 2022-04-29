@@ -18,9 +18,10 @@ const Profile = () => {
         e.preventDefault();
         try {
             await axios.put('https://frontend-educational-backend.herokuapp.com/api/user',
-                {"password": {password},
-                      "repeatedPassword": {repeatedPassword},
-                    headers: {
+                {
+                    "password": password,
+                    "repeatedPassword": repeatedPassword,
+                }, {headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     },
@@ -36,12 +37,13 @@ const Profile = () => {
         e.preventDefault();
         try {
              await axios.put('https://frontend-educational-backend.herokuapp.com/api/user',
-                {"email" : {email},
-                       headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                    },
-                })
+                 {
+                     "email": email,
+                 }, {headers: {
+                         "Content-Type": "application/json",
+                         "Authorization": `Bearer ${token}`,
+                     },
+                 })
             console.log("The change was successful!");
         } catch (e) {
             console.error(e);
@@ -77,6 +79,7 @@ const Profile = () => {
                                     <input
                                         type="text"
                                         id="change-password"
+                                        placeholder="Use a minimum of 6 characters"
                                         onChange={(e) => setPassword(e.target.value)}
                                         value={password}
                                     />

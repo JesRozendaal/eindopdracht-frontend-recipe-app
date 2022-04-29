@@ -1,6 +1,44 @@
 .form-decision-maker {
     background-color: #FEFEFB;
     border-radius: 10px;
-    width: 1000px;
-    height: 600px;
+    margin: 20px 5px 20px 5px;
+}
+
+.radio {
+    width: 10px;
+}
+
+.explanation {
+    font-size: 16px;
+}
+
+.container-recipe-decision {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #FEFEFB;
+    flex-basis: 1200px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin: 50px 5px 50px 5px;
+    box-shadow: 3px 3px 4px #343A40;
+}
+
+.image-recipe-decision {
+    border-radius: 10px 0 0 10px;
+}
+
+.text-decision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.title-decision-recipe {
+    margin-bottom: 60px;
+}
+
+.container-button-decision {
+   margin-top: 20px;
 }

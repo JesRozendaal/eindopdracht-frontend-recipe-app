@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/*:root {*/
+/*  --dark-grey: #343A40;*/
+/*  --background: #F1F4DC;*/
+/*  --background-input: #E9ECEF;*/
+/*  --orange: #F2A56F;*/
+/*}*/
+
 body {
   font-family: 'Lora', serif;
   font-weight: 400;
