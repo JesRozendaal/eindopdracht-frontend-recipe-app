@@ -35,6 +35,8 @@ const Profile = () => {
                     },
                 })
             toggleChangePassword(true);
+            setPassword('');
+            setRepeatedPassword('');
         } catch (e) {
             console.error(e);
             toggleError(true);
@@ -57,6 +59,7 @@ const Profile = () => {
                      },
                  })
             toggleChangeEmail(true);
+             setEmail('');
         } catch (e) {
             console.error(e);
             toggleError(true);

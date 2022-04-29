@@ -18,7 +18,7 @@ const Decision = () => {
     const [error, toggleError] = useState(false);
     const [recipe, setRecipe] = useState();
     const [mood, setMood] = useState(0);
-    const [cuisine, setCuisine] = useState(0);
+    const [cuisine, setCuisine] = useState('');
     const [motivation, setMotivation] = useState('');
     const [allergies, setAllergies] = useState('');
     const [loading, toggleLoading] = useState(false);

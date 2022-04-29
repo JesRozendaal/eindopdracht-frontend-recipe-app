@@ -34,8 +34,10 @@ const Fridge = () => {
                 });
             console.log(result);
             setRecipe(result);
+            setIngredients('');
         } catch(e){console.error(e);
             toggleError(true);
+            setIngredients('');
         }
         toggleLoading(false);
     }

@@ -15,6 +15,8 @@ const LoginRegister = () => {
     const [userNameRegister, setUserNameRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
     const [registered, toggleRegistered] = useState(false);
+    const [error, toggleError] = useState(false);
+    const [errorRegister, toggleErrorRegister] = useState();
     const {login} = useContext(AuthContext);
     const source = axios.CancelToken.source();
 
@@ -26,6 +28,7 @@ const LoginRegister = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
         try {
             const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin',
                 {
@@ -34,15 +37,19 @@ const LoginRegister = () => {
                 }, {
                 cancelToken: source.token,
                 });
+            setUserNameLogin('');
+            setPasswordLogin('');
             login(result.data.accessToken);
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
     }
 
     async function handleRegister(e) {
         e.preventDefault();
         toggleRegistered(false);
+        toggleErrorRegister(false);
         try {
             await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup',
             {
@@ -54,8 +61,12 @@ const LoginRegister = () => {
                 cancelToken: source.token,
                 });
             toggleRegistered(true);
+            setUserNameRegister('');
+            setPasswordRegister('');
+            setEmailRegister('');
         } catch (e) {
             console.error(e);
+            toggleErrorRegister(true);
         }
     }
 
@@ -106,6 +117,9 @@ const LoginRegister = () => {
                                     type="submit"
                                     name="Log in"
                                 />
+                                {error &&
+                                <h4>Oops, you entered the wrong data....</h4>
+                                }
                             </form>
 
                             <form
@@ -153,6 +167,9 @@ const LoginRegister = () => {
                                 />
                                 <p className="warning">After you register you have to log in!</p>
 
+                                {errorRegister &&
+                                <h4>Oops, it seems like you have to choose another username/password....</h4>
+                                }
                                 {registered &&
                                 <h4>You are registered!</h4>
                                 }
