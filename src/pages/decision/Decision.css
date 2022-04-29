@@ -5,20 +5,34 @@
 }
 
 .radio {
-    height: 10px;
+    width: 10px;
 }
 
 .explanation {
     font-size: 16px;
 }
 
-.button-decision {
+.container-recipe-decision {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
     background-color: #FEFEFB;
-    border: #FEFEFB;
-    width:50px;
-    height: 50px;
-    }
+    flex-basis: 1200px;
+    margin: 50px 5px 50px 5px;
+    box-shadow: 3px 3px 4px #343A40;
+}
 
-.button-decision:active {
-    border: 2px solid #F2A56F;
+.image-recipe-decision {
+    border-radius: 10px 0 0 10px;
+}
+
+.text-decision {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.title-decision-recipe {
+    margin-bottom: 60px;
 }

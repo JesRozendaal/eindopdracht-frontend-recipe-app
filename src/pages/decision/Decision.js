@@ -11,33 +11,34 @@ import HappySmiley from "../../assets/icons/happy_mood_icon_211409.png";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
 import Error from "../../assets/photos/mistake-ge1eac774b_1920.jpg";
-import Textblock from "../../components/home/Textblock";
 import TextAllPages from "../../components/text/TextAllPages";
-
-//endpoint: https://api.spoonacular.com/recipes/complexSearch?maxReadyTime=20&intolerances="peanut"&number=10&apiKey=${process.env.REACT_APP_API_KEY}
 
 const Decision = () => {
     const [error, toggleError] = useState(false);
     const [recipe, setRecipe] = useState();
     const [mood, setMood] = useState(0);
-    const [nrOfPersons, setNrOfPersons] = useState(0);
+    const [cuisine, setCuisine] = useState(0);
     const [motivation, setMotivation] = useState('');
     const [allergies, setAllergies] = useState('');
 
     async function handleSubmit(e) {
         toggleError(false);
         e.preventDefault();
-        console.log(allergies, nrOfPersons);
         try {
-            await axios.get(`https://api.spoonacular.com/recipes/complexSearch?maxReadyTime=20&minCarbs=600&intolerances=${allergies}&number=10&apiKey=${process.env.REACT_APP_API_KEY}`)
+            const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&maxReadyTime=${motivation}&maxCalories=${mood}&intolerances=${allergies}number=15&apiKey=${process.env.REACT_APP_API_KEY}`)
+            setRecipe(result.data);
         } catch(e) {
             console.error(e)
             toggleError(true);
         }
     }
 
-    function handleSelect(e) {
+    function handleSelectAllergies(e) {
         setAllergies(e.target.value);
+    }
+
+    function handleSelectCuisine(e) {
+        setCuisine(e.target.value);
     }
 
     return (
@@ -60,77 +61,168 @@ const Decision = () => {
 
                         <form className="form-decision-maker" onSubmit={handleSubmit}>
                             <h4>What is your mood today?</h4>
-                              <button type="button"
-                                      className="button-decision"
-                              >
+                            <label htmlFor="sad-mood-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="sad-mood-smiley"
+                                    value="800"
+                                    name="mood"
+                                    onChange={(e) => setMood(e.target.value)}
+                                />
                                 <img src={SadSmiley} alt="sad smiley" width="40px"/>
-                           </button>
-                            <button
-                                type="button"
-                                className="button-decision"
-                            >
+                            </label>
+                            <label htmlFor="less-sad-mood-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="less-sad-mood-smiley"
+                                    value="600"
+                                    name="mood"
+                                    onChange={(e) => setMood(e.target.value)}
+                                />
                             <img src={LessSadSmiley} alt="less sad smiley" width="40px"/>
-                            </button>
-                            <button
-                                type="button"
-                                className="button-decision"
-                            >
+                            </label>
+                            <label htmlFor="neutral-mood-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="neutral-mood-smiley"
+                                    value="400"
+                                    name="mood"
+                                    onChange={(e) => setMood(e.target.value)}
+                                />
                             <img src={NeutralSmiley} alt="neutral smiley" width="40px"/>
-                            </button>
-                            <button
-                                type="button"
-                                className="button-decision"
-                            >
+                            </label>
+                            <label htmlFor="happy-mood-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="happy-mood-smiley"
+                                    value="200"
+                                    name="mood"
+                                    onChange={(e) => setMood(e.target.value)}
+                                />
                             <img src={SmileSmiley} alt="smiling smiley" width="40px"/>
-                            </button>
-                            <button
-                                type="button"
-                                className="button-decision"
-                            >
+                            </label>
+                            <label htmlFor="great-mood-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="great-mood-smiley"
+                                    value="50"
+                                    name="mood"
+                                    onChange={(e) => setMood(e.target.value)}
+                                />
                             <img src={HappySmiley} alt="happy smiley" width="40px"/>
-                            </button>
+                            </label>
 
                             <label htmlFor="nr-off-persons">
-                                <h4>How many people are you cooking for?</h4>
-                                <input
-                                    type="number"
-                                    id="nr-off-persons"
-                                    onChange={(e) => setNrOfPersons(e.target.value)}
-                                    value={nrOfPersons}
-                                />
+                                <h4>What does your company like to eat?</h4>
+                                <select
+                                    defaultValue={allergies}
+                                    onChange={handleSelectCuisine}
+                                >
+                                    <option value="">
+                                        Everything
+                                    </option>
+                                    <option  value="american">
+                                        American
+                                    </option>
+                                    <option value="british">
+                                        British
+                                    </option>
+                                    <option value="chinese">
+                                        Chinese
+                                    </option>
+                                    <option value="european">
+                                        European
+                                    </option>
+                                    <option value="greek">
+                                        Greek
+                                    </option>
+                                    <option value="italian">
+                                        Italian
+                                    </option>
+                                    <option value="mexican">
+                                        Mexican
+                                    </option>
+                                    <option value="middle eastern">
+                                        Middle Eastern
+                                    </option>
+                                    <option value="southern">
+                                        Southern
+                                    </option>
+                                    <option value="thai">
+                                        Thai
+                                    </option>
+                                    <option value="vietnamese">
+                                        Vietnamese
+                                    </option>
+                                </select>
                             </label>
 
                             <h4>How motivated are you to cook?</h4>
+                            <label htmlFor="no-motivation-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="no-motivation-smiley"
+                                    value="20"
+                                    name="motivation"
+                                    onChange={(e) => setMotivation(e.target.value)}
+                                />
                             <img src={SadSmiley} alt="sad smiley" width="40px"/>
+                            </label>
+                            <label htmlFor="little-motivation-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="little-motivation-smiley"
+                                    value="30"
+                                    name="motivation"
+                                    onChange={(e) => setMotivation(e.target.value)}
+                                />
                             <img src={LessSadSmiley} alt="less sad smiley" width="40px"/>
+                            </label>
+                            <label htmlFor="neutral-motivation-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="neutral-motivation-smiley"
+                                    value="45"
+                                    name="motivation"
+                                    onChange={(e) => setMotivation(e.target.value)}
+                                />
                             <img src={NeutralSmiley} alt="neutral smiley" width="40px"/>
+                            </label>
+                            <label htmlFor="good-motivation-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="good-motivation-smiley"
+                                    value="70"
+                                    name="motivation"
+                                    onChange={(e) => setMotivation(e.target.value)}
+                                />
                             <img src={SmileSmiley} alt="smiling smiley" width="40px"/>
+                            </label>
+                            <label htmlFor="great-motivation-smiley">
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    id="great-motivation-smiley"
+                                    value="150"
+                                    name="motivation"
+                                    onChange={(e) => setMotivation(e.target.value)}
+                                />
                             <img src={HappySmiley} alt="happy smiley" width="40px"/>
+                            </label>
 
                             <h4>Does anyone have allergies?</h4>
-                            {/*<label htmlFor="no-allergies-radio">*/}
-                            {/*    <input*/}
-                            {/*        className="radio"*/}
-                            {/*        type="radio"*/}
-                            {/*        id="no-allergies-radio"*/}
-                            {/*        value="no-allergies"*/}
-                            {/*        name="allergy-choice"*/}
-                            {/*    />*/}
-                            {/*    No*/}
-                            {/*</label>*/}
-                            {/*<label htmlFor="yes-allergies-radio">*/}
-                            {/*    <input*/}
-                            {/*        className="radio"*/}
-                            {/*        type="radio"*/}
-                            {/*        id="yes-allergies-radio"*/}
-                            {/*        value="allergies"*/}
-                            {/*        name="allergy-choice"*/}
-                            {/*    />*/}
-                            {/*    Yes, for:*/}
-                            {/*</label>*/}
                             <select
                                 defaultValue={allergies}
-                                onChange={handleSelect}
+                                onChange={handleSelectAllergies}
                             >
                                 <option value="">
                                     None
@@ -172,13 +264,13 @@ const Decision = () => {
                                     Wheat
                                 </option>
                             </select>
-                            <p className="explanation">For more than one allergy, please press Ctrl + click on the items.</p>
-                            <button type="submit">
+
+                            <button
+                                type="submit"
+                            >
                                 Search
                             </button>
                         </form>
-
-
 
                         {error &&
                         <div className="outer-container">
@@ -192,13 +284,13 @@ const Decision = () => {
                         {recipe &&
                         <>
                             <h2>Your recipes</h2>
-                            {recipe.data.map((recipes) => {
+                            {recipe.results.map((recipes) => {
                                 return (
-                                    <div className="container-recipe-fridge" key={recipes.id}>
-                                        <img src={recipes.image} alt="recipe" className="image-recipe-fridge"/>
-                                        <section className="text-fridge">
+                                    <div className="container-recipe-decision" key={recipes.id}>
+                                        <img src={recipes.image} alt="recipe" className="image-recipe-decision"/>
+                                        <section className="text-decision">
                                             <article>
-                                                <h3 className="title-fridge-recipe"><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
+                                                <h3 className="title-decision-recipe"><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>
                                                 <div className="text-recipes">
                                                     <RecipeTimePersons
                                                         id={recipes.id}
@@ -208,7 +300,7 @@ const Decision = () => {
                                         </section>
                                     </div>
                                 )})}
-                        </>}
+                        </> }
 
                         <div className="home-container">
                             <Link
