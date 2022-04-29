@@ -12,20 +12,25 @@ import Error from "../../assets/photos/mistake-ge1eac774b_1920.jpg";
 const Subrecipe = () => {
     const [fullRecipe, setFullRecipe] = useState(null);
     const {recipeId} = useParams();
-    const {auth} =useContext(AuthContext);
     const [error, toggleError] = useState(false);
+    const {auth} =useContext(AuthContext);
+    const source = axios.CancelToken.source();
 
     useEffect(()=>{
         async function getData() {
             toggleError(false);
             try {
-                const result = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`);
+                const result = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`,
+                    {cancelToken: source.token,});
                 setFullRecipe(result.data);
             } catch (e) {
                 console.error(e);
                 toggleError(true);
             }
         } getData();
+        return function cleanup() {
+            source.cancel();
+        }
     },[recipeId]);
 
     return (

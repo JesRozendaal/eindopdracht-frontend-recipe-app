@@ -6,6 +6,10 @@ ul {
     justify-content: space-between;
 }
 
+li {
+    margin: 5px;
+}
+
 .nav-link {
     color: #F2A56F;
     font-size: 20px;

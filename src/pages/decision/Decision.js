@@ -3,16 +3,16 @@ import './Decision.css';
 import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
+import TextAllPages from "../../components/text/TextAllPages";
+import Button from "../../components/buttons/Button";
 import SadSmiley from "../../assets/icons/sad_mood_icon_211218.png";
 import LessSadSmiley from "../../assets/icons/confuzed_mood_icon_211412.png";
 import NeutralSmiley from "../../assets/icons/empty_mood_icon_211384.png";
 import SmileSmiley from "../../assets/icons/smile_mood_icon_211284.png";
 import HappySmiley from "../../assets/icons/happy_mood_icon_211409.png";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
-import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
 import Error from "../../assets/photos/mistake-ge1eac774b_1920.jpg";
-import TextAllPages from "../../components/text/TextAllPages";
-import Button from "../../components/buttons/Button";
 
 const Decision = () => {
     const [error, toggleError] = useState(false);
@@ -21,9 +21,11 @@ const Decision = () => {
     const [cuisine, setCuisine] = useState(0);
     const [motivation, setMotivation] = useState('');
     const [allergies, setAllergies] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     async function handleSubmit(e) {
         toggleError(false);
+        toggleLoading(true);
         e.preventDefault();
         try {
             const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&maxReadyTime=${motivation}&maxCalories=${mood}&intolerances=${allergies}number=15&apiKey=${process.env.REACT_APP_API_KEY}`)
@@ -32,6 +34,7 @@ const Decision = () => {
             console.error(e)
             toggleError(true);
         }
+        toggleLoading(false);
     }
 
     function handleSelectAllergies(e) {
@@ -275,12 +278,14 @@ const Decision = () => {
                         </form>
 
                         {error &&
-                        <div className="outer-container">
-                            <div className="inner-container">
-                                <img src={Error} alt="error" width="400px" className="image-subrecipe"/>
-                                <h2 className="error">Oops... Something went wrong</h2>
-                            </div>
-                        </div>
+                        <>
+                            <img src={Error} alt="error" width="400px" className="image-subrecipe"/>
+                            <h2 className="error">Oops... Something went wrong</h2>
+                        </>
+                        }
+
+                        {loading &&
+                        <h2>Loading....</h2>
                         }
 
                         {recipe &&

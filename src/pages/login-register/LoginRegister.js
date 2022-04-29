@@ -1,21 +1,28 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import './LoginRegister.css';
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
 import TextAllPages from "../../components/text/TextAllPages";
-import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 import Button from "../../components/buttons/Button";
+import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 
 const LoginRegister = () => {
-    const {login} = useContext(AuthContext);
     const [userNameLogin, setUserNameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
     const [emailRegister, setEmailRegister] = useState('');
     const [userNameRegister, setUserNameRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
     const [registered, toggleRegistered] = useState(false);
+    const {login} = useContext(AuthContext);
+    const source = axios.CancelToken.source();
+
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -24,7 +31,9 @@ const LoginRegister = () => {
                 {
                     "username": userNameLogin,
                     "password" : passwordLogin,
-                })
+                }, {
+                cancelToken: source.token,
+                });
             login(result.data.accessToken);
         } catch (e) {
             console.error(e);
@@ -41,7 +50,9 @@ const LoginRegister = () => {
                 "email": emailRegister,
                 "password": passwordRegister,
                 "role": ["user"],
-            });
+            }, {
+                cancelToken: source.token,
+                });
             toggleRegistered(true);
         } catch (e) {
             console.error(e);

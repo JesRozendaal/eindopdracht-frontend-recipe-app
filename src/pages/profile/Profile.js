@@ -2,26 +2,28 @@ import React, {useContext, useState} from 'react';
 import './Profile.css';
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
+import axios from "axios";
+import Button from "../../components/buttons/Button";
 import Header from "../../components/header/Header";
 import Recipe1 from "../../components/recipes/Recipe1";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
-import axios from "axios";
-import Button from "../../components/buttons/Button";
 
 const Profile = () => {
-    const {user} = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatedPassword, setRepeatedPassword] = useState('');
     const [changePassword, toggleChangePassword] =useState(false);
     const [changeEmail, toggleChangeEmail] =useState(false);
     const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const {user} = useContext(AuthContext);
 
     async function handleSubmit(e) {
         const token = localStorage.getItem('token');
         e.preventDefault();
         toggleChangePassword(false);
         toggleError(false);
+        toggleLoading(true);
         try {
             await axios.put('https://frontend-educational-backend.herokuapp.com/api/user',
                 {
@@ -37,6 +39,7 @@ const Profile = () => {
             console.error(e);
             toggleError(true);
         }
+        toggleLoading(false);
     }
 
     async function handleEmailChange(e) {
@@ -70,7 +73,9 @@ const Profile = () => {
                 <div className="outer-container">
                     <div className="inner-container">
                         <h2>My favorite recipes</h2>
-
+                        {loading &&
+                        <h2>Loading...</h2>
+                        }
                         <Recipe1
                             nrOffRecipes="4"
                             offset="0"
