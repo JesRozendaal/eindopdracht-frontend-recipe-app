@@ -264,12 +264,14 @@ const Decision = () => {
                                     Wheat
                                 </option>
                             </select>
-
+                            <div className="container-button-decision">
                             <button
                                 type="submit"
                             >
                                 Search
                             </button>
+                            </div>
+
                         </form>
 
                         {error &&
