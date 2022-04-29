@@ -12,6 +12,7 @@ import Home from "../../assets/icons/3643769-building-home-house-main-menu-start
 import RecipeTimePersons from "../../components/recipes/RecipeTimePersons";
 import Error from "../../assets/photos/mistake-ge1eac774b_1920.jpg";
 import TextAllPages from "../../components/text/TextAllPages";
+import Button from "../../components/buttons/Button";
 
 const Decision = () => {
     const [error, toggleError] = useState(false);
@@ -265,11 +266,10 @@ const Decision = () => {
                                 </option>
                             </select>
                             <div className="container-button-decision">
-                            <button
-                                type="submit"
-                            >
-                                Search
-                            </button>
+                                <Button
+                                    type="submit"
+                                    name="Search"
+                                />
                             </div>
 
                         </form>

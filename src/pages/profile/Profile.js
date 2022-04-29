@@ -6,6 +6,7 @@ import Header from "../../components/header/Header";
 import Recipe1 from "../../components/recipes/Recipe1";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
 import axios from "axios";
+import Button from "../../components/buttons/Button";
 
 const Profile = () => {
     const {user} = useContext(AuthContext);
@@ -104,11 +105,11 @@ const Profile = () => {
                                         value={repeatedPassword}
                                     />
                                 </label>
-                                <button
-                                type="submit"
-                                >
-                                    Save
-                                </button>
+                                <Button
+                                    typ="submit"
+                                    name="Save"
+                                />
+
                                 {error &&
                                 <h4>Nothing changed, please try again....</h4>
                                 }
@@ -129,17 +130,19 @@ const Profile = () => {
                                         value={email}
                                     />
                                 </label>
-                                <button
-                                type="submit"
-                                >
-                                    Save
-                                </button>
+                                <Button
+                                    type="submit"
+                                    name="Save"
+                                />
+
                                 {error &&
                                 <h4>Nothing changed, please try again....</h4>
                                 }
+
                                 {changeEmail &&
                                 <h4>The change was successful!</h4>
                                 }
+
                             </form>
                         </div>
 

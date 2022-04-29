@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import Recipe1 from "../../components/recipes/Recipe1";
 import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
+import Button from "../../components/buttons/Button";
 
 const Recipe = () => {
     const [offset, setOffset] = useState(0);
@@ -31,19 +32,30 @@ const Recipe = () => {
                             offset={offset}
                         />
                         <div className="buttons-box">
-                            <button
+                            <Button
                                 type="button"
+                                name="Previous"
                                 onClick={() => setOffset(offset -10)}
                                 disabled={offset === 0}
-                            >
-                                Previous
-                            </button>
-                            <button
+                            />
+                            {/*<button*/}
+                            {/*    type="button"*/}
+                            {/*    onClick={() => setOffset(offset -10)}*/}
+                            {/*    disabled={offset === 0}*/}
+                            {/*>*/}
+                            {/*    Previous*/}
+                            {/*</button>*/}
+                            <Button
                                 type="button"
+                                name="Next"
                                 onClick={() => setOffset(offset +10)}
-                                >
-                                Next
-                            </button>
+                            />
+                            {/*<button*/}
+                            {/*    type="button"*/}
+                            {/*    onClick={() => setOffset(offset +10)}*/}
+                            {/*    >*/}
+                            {/*    Next*/}
+                            {/*</button>*/}
                         </div>
                         <div className="home-container">
                             <Link to="/" className="link-back-home"><strong>Back</strong> <img src={Home} alt="home icon" width="25px"/></Link>

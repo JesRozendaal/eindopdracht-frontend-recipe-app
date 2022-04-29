@@ -6,6 +6,7 @@ import {AuthContext} from "../../context/AuthContext";
 import Header from "../../components/header/Header";
 import TextAllPages from "../../components/text/TextAllPages";
 import Home from "../../assets/icons/3643769-building-home-house-main-menu-start_113416.png";
+import Button from "../../components/buttons/Button";
 
 const LoginRegister = () => {
     const {login} = useContext(AuthContext);
@@ -90,12 +91,10 @@ const LoginRegister = () => {
                                         value={passwordLogin}
                                     />
                                 </label>
-
-                                <button
-                                type="submit"
-                                >
-                                    Log in
-                                </button>
+                                <Button
+                                    type="submit"
+                                    name="Log in"
+                                />
                             </form>
 
                             <form
@@ -137,17 +136,18 @@ const LoginRegister = () => {
                                         placeholder="Use a minimum of 6 characters"
                                     />
                                 </label>
-                                <button
-                                type="submit"
-                                >
-                                    Register
-                                </button>
+                                <Button
+                                    type="submit"
+                                    name="Register"
+                                />
                                 <p className="warning">After you register you have to log in!</p>
+
                                 {registered &&
                                 <h4>You are registered!</h4>
                                 }
                             </form>
                         </div>
+
                         <div className="home-container">
                             <Link
                                 to="/"
