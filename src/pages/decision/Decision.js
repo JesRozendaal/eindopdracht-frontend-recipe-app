@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Decision.css';
 import Header from "../../components/header/Header";
 import {Link} from "react-router-dom";
@@ -22,13 +22,23 @@ const Decision = () => {
     const [motivation, setMotivation] = useState('');
     const [allergies, setAllergies] = useState('');
     const [loading, toggleLoading] = useState(false);
+    const source = axios.CancelToken.source();
+
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     async function handleSubmit(e) {
         toggleError(false);
         toggleLoading(true);
         e.preventDefault();
         try {
-            const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&maxReadyTime=${motivation}&maxCalories=${mood}&intolerances=${allergies}number=15&apiKey=${process.env.REACT_APP_API_KEY}`)
+            const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&maxReadyTime=${motivation}&maxCalories=${mood}&intolerances=${allergies}number=15&apiKey=${process.env.REACT_APP_API_KEY}`,
+                {
+                    cancelToken: source.token,
+                })
             setRecipe(result.data);
         } catch(e) {
             console.error(e)

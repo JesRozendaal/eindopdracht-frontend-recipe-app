@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Fridge.css';
 import {Link} from "react-router-dom";
 import axios from "axios";
@@ -14,13 +14,24 @@ const Fridge = () => {
     const[recipe, setRecipe] = useState(null);
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
+    const source = axios.CancelToken.source();
+
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     async function handleSubmit(e) {
+
         e.preventDefault();
         toggleError(false);
         toggleLoading(true);
         try {
-            const result = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=10&apiKey=${process.env.REACT_APP_API_KEY}`);
+            const result = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=10&apiKey=${process.env.REACT_APP_API_KEY}`,
+                {
+                    cancelToken: source.token,
+                });
             console.log(result);
             setRecipe(result);
         } catch(e){console.error(e);
