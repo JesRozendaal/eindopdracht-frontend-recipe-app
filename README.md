@@ -14,12 +14,24 @@ Ga je mee op reis naar een heerlijke maaltijd?
 
 ![screenshot](src/assets/photos/screenshot%20home.JPG)
 
+De applicatie maakt gebruik van de NOVI backend. 
+Omdat deze de aangemaakte gebruikersgegevens regelmatig verwijderd, zijn er nog geen accounts aangemaakt.
+Dit kan je zelf doen op de login/register pagina.
+
 ## Stap 1: Applicatie clonen
 
-De applicatie kan je naar jouw locale machine clonen, door deze uit Github te halen: https://github.com/JesRozendaal/eindopdracht-frontend-recipe-app
-Klik op de groene knop "Code". Kies vervolgens voor SSH en kopieer de link die verschijnt.
+De applicatie kan je naar jouw locale machine clonen door deze uit Github te halen: https://github.com/JesRozendaal/eindopdracht-frontend-recipe-app
 
-Kies in Webstorm voor Git => Clone en plak de link in het veld URL. Druk nu helemaal onderin op de knop Clone.
+* Klik op de groene knop "Code". 
+* Kies vervolgens voor SSH en kopieer de link die verschijnt.
+* Openen in Webstorm:
+  - Druk op de knop `Get from VCS`
+      Plak de link in het veld URL en druk op de knop `Clone`.
+  - Zit je reeds in een project, dan:
+
+    Kies in Webstorm voor `Git` => `Clone` en plak de link in het veld URL. Druk nu helemaal onderin op de knop `Clone`.
+
+  
 
 ## Stap 2: Gebruik gegevens API
 
@@ -53,7 +65,7 @@ commando in de terminal te runnen:
 npm install
 ```
 
-Wanneer dit klaar is, kun je de applicatie starten met behulp van:
+Wanneer dit klaar is, kun je de applicatie starten met behulp van het commando:
 
 ```
 npm start
