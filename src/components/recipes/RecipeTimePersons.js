@@ -8,15 +8,20 @@ const RecipeTimePersons = ({id}) => {
     const[recipe, setRecipe] = useState(null);
 
     useEffect(() => {
+        const source = axios.CancelToken.source();
         async function fetchData() {
             try {
-                const result = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`);
+                const result = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`,
+                    {cancelToken: source.token,});
                 setRecipe(result.data);
             }catch (e) {
                 console.error(e);
             }
         }
         fetchData();
+        return function cleanup() {
+            source.cancel();
+        }
     },[id]);
 
         return (

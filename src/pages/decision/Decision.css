@@ -1,3 +1,7 @@
+select {
+    margin: 10px;
+}
+
 .form-decision-maker {
     background-color: #FEFEFB;
     border-radius: 10px;
@@ -19,14 +23,8 @@
     flex-direction: row;
     background-color: #FEFEFB;
     flex-basis: 1200px;
-    flex-shrink: 1;
-    flex-grow: 0;
     margin: 50px 5px 50px 5px;
     box-shadow: 3px 3px 4px #343A40;
-}
-
-.image-recipe-decision {
-    border-radius: 10px 0 0 10px;
 }
 
 .text-decision {

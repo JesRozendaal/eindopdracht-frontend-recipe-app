@@ -35,7 +35,7 @@ const Decision = () => {
         toggleLoading(true);
         e.preventDefault();
         try {
-            const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&maxReadyTime=${motivation}&maxCalories=${mood}&intolerances=${allergies}number=15&apiKey=${process.env.REACT_APP_API_KEY}`,
+            const result = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&maxReadyTime=${motivation}&maxCalories=${mood}&intolerances=${allergies}number=10&apiKey=${process.env.REACT_APP_API_KEY}`,
                 {
                     cancelToken: source.token,
                 })
@@ -304,7 +304,7 @@ const Decision = () => {
                             {recipe.results.map((recipes) => {
                                 return (
                                     <div className="container-recipe-decision" key={recipes.id}>
-                                        <img src={recipes.image} alt="recipe" className="image-recipe-decision"/>
+                                        <img src={recipes.image} alt="recipe" className="image-recipe-decision-fridge"/>
                                         <section className="text-decision">
                                             <article>
                                                 <h3 className="title-decision-recipe"><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>

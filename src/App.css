@@ -96,6 +96,20 @@ footer {
   margin-left: 10px;
 }
 
-.error {
+.image-recipe-decision-fridge {
+  border-radius: 10px 0 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .image-recipe-decision-fridge{
+    width: 215px;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .image-recipe-decision-fridge{
+    width: 100px;
+  }
 
 }

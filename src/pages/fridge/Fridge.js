@@ -32,7 +32,6 @@ const Fridge = () => {
                 {
                     cancelToken: source.token,
                 });
-            console.log(result);
             setRecipe(result);
             setIngredients('');
         } catch(e){console.error(e);
@@ -96,7 +95,7 @@ const Fridge = () => {
                             {recipe.data.map((recipes) => {
                                 return (
                                     <div className="container-recipe-fridge" key={recipes.id}>
-                                        <img src={recipes.image} alt="recipe" className="image-recipe-fridge"/>
+                                        <img src={recipes.image} alt="recipe" className="image-recipe-decision-fridge"/>
                                         <section className="text-fridge">
                                             <article>
                                                 <h3 className="title-fridge-recipe"><Link to={`/recipes/${recipes.id}`} className="link-recipe">{recipes.title}</Link></h3>

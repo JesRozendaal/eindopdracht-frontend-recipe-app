@@ -5,8 +5,7 @@
     display: flex;
     flex-direction:column;
     flex-basis: 500px;
-    /*flex-grow: 0;*/
-    /*flex-shrink: 1;*/
+    width: 500px;
 }
 
 .container-text {
@@ -43,4 +42,14 @@
 
 .link-recipe {
     text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .recipe-box {
+        width: 300px;
+    }
+
+    .image-recipes {
+        width: 300px;
+    }
 }
