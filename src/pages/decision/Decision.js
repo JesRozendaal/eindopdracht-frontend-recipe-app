@@ -19,7 +19,7 @@ const Decision = () => {
     const [recipe, setRecipe] = useState();
     const [mood, setMood] = useState(0);
     const [cuisine, setCuisine] = useState('');
-    const [motivation, setMotivation] = useState('');
+    const [motivation, setMotivation] = useState(0);
     const [allergies, setAllergies] = useState('');
     const [loading, toggleLoading] = useState(false);
     const source = axios.CancelToken.source();
@@ -40,6 +40,8 @@ const Decision = () => {
                     cancelToken: source.token,
                 })
             setRecipe(result.data);
+            setMood(0);
+            setMotivation(0);
         } catch(e) {
             console.error(e)
             toggleError(true);
@@ -282,6 +284,7 @@ const Decision = () => {
                                 <Button
                                     type="submit"
                                     name="Search"
+                                    disabled={motivation === 0}
                                 />
                             </div>
 
