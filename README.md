@@ -37,7 +37,7 @@ De applicatie kan je naar jouw locale machine clonen door deze uit Github te hal
 
 De applicatie maakt gebruik van data uit een API.
 
-Om de alle functies van de applicatie te gebruiken is een API key nodig.
+Om alle functies van de applicatie te gebruiken is een API key nodig.
 * Open het `.env.dist` bestand. Hierin staat hoe de key aangeleverd moet worden.
 * Maak in de hoofdmap van het project een nieuw file/bestand aan genaamd `.env`. 
 * Zet hier vervolgens op de aangegeven manier de key in.
