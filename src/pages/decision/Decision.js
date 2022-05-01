@@ -282,7 +282,7 @@ const Decision = () => {
                                 <Button
                                     type="submit"
                                     name="Search"
-                                    disabled={motivation === 0}
+                                    disabled={motivation === 0 || mood === 0}
                                 />
                             </div>
 

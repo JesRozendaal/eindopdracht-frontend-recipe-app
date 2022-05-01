@@ -116,6 +116,7 @@ const Profile = () => {
                                 <Button
                                     typ="submit"
                                     name="Save"
+                                    disabled={!password || !repeatedPassword}
                                 />
 
                                 {error &&
@@ -141,6 +142,7 @@ const Profile = () => {
                                 <Button
                                     type="submit"
                                     name="Save"
+                                    disabled={!email}
                                 />
 
                                 {error &&
