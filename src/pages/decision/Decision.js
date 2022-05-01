@@ -40,8 +40,6 @@ const Decision = () => {
                     cancelToken: source.token,
                 })
             setRecipe(result.data);
-            setMood(0);
-            setMotivation(0);
         } catch(e) {
             console.error(e)
             toggleError(true);
@@ -284,7 +282,7 @@ const Decision = () => {
                                 <Button
                                     type="submit"
                                     name="Search"
-                                    disabled={motivation === 0}
+                                    disabled={motivation === 0 || mood === 0}
                                 />
                             </div>
 
@@ -292,7 +290,7 @@ const Decision = () => {
 
                         {error &&
                         <>
-                            <img src={Error} alt="error" width="400px" className="image-subrecipe"/>
+                            <img src={Error} alt="error" width="400px" className="image-error"/>
                             <h2 className="error">Oops... Something went wrong</h2>
                         </>
                         }
@@ -305,6 +303,10 @@ const Decision = () => {
                         <>
                             <h2>Your recipes</h2>
                             {recipe.results.map((recipes) => {
+                                if (recipes === 0) {
+                                    return (<p>Sorry, no recipes are found. Please try again.</p>)
+                                }
+                                else {
                                 return (
                                     <div className="container-recipe-decision" key={recipes.id}>
                                         <img src={recipes.image} alt="recipe" className="image-recipe-decision-fridge"/>
@@ -319,7 +321,7 @@ const Decision = () => {
                                             </article>
                                         </section>
                                     </div>
-                                )})}
+                                )}})}
                         </> }
 
                         <div className="home-container">

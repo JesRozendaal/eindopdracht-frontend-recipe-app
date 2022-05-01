@@ -80,7 +80,7 @@ const Fridge = () => {
 
                         {error &&
                             <>
-                                <img src={Error} alt="error" width="400px" className="image-subrecipe"/>
+                                <img src={Error} alt="error" width="400px" className="image-error"/>
                                 <h2 className="error">Oops... Something went wrong</h2>
                             </>
                         }

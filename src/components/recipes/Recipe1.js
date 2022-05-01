@@ -28,7 +28,7 @@ const Recipe1 = ({nrOffRecipes, offset}) => {
         return function cleanup() {
             source.cancel();
         }
-    },[nrOffRecipes, offset]);
+    },[]);
 
     return (
 

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './Profile.css';
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
@@ -116,6 +116,7 @@ const Profile = () => {
                                 <Button
                                     typ="submit"
                                     name="Save"
+                                    disabled={!password || !repeatedPassword}
                                 />
 
                                 {error &&
@@ -141,6 +142,7 @@ const Profile = () => {
                                 <Button
                                     type="submit"
                                     name="Save"
+                                    disabled={!email}
                                 />
 
                                 {error &&

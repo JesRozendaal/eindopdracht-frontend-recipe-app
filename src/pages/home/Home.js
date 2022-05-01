@@ -49,7 +49,7 @@ const Home = () => {
                                     image={InsideFridge}
                                     alt="fridge"
                                     title="What's in your fridge?"
-                                    link={"/fridge"}
+                                    link={"/whats-in-your-fridge"}
                                     className="link-home"
                                 />
                                 <Textblock

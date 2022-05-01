@@ -4,7 +4,6 @@ article {
 
 .container-home-blocks {
     display: flex;
-    /*flex-direction: row;*/
     justify-content: space-between;
     flex-grow: 0;
     flex-shrink: 1;
