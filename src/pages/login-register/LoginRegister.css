@@ -4,9 +4,10 @@
     background-color: #FEFEFB;
     border-radius: 10px;
     box-shadow: 3px 3px 4px #343A40;
-    flex-basis: 500px;
+    flex-basis: 300px;
     flex-shrink: 1;
     flex-grow: 0;
+    margin: 5px;
 }
 
 .container-forms {
@@ -32,11 +33,21 @@
 }
 
 input {
-    width: 300px;
+    width: 225px;
     height: 30px;
     margin: 20px;
 }
 
 .warning {
     margin: 10px;
+}
+
+@media screen and (min-width: 550px) {
+    .login-register-form {
+        flex-basis: 500px;
+    }
+
+    input {
+        width: 300px;
+    }
 }

@@ -47,9 +47,11 @@
 @media screen and (max-width: 768px) {
     .recipe-box {
         width: 300px;
+        margin-left: 5px;
     }
 
     .image-recipes {
         width: 300px;
+        margin-left: 5px;
     }
 }

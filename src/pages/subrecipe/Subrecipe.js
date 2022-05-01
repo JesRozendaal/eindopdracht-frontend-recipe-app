@@ -31,7 +31,7 @@ const Subrecipe = () => {
         return function cleanup() {
             source.cancel();
         }
-    },[recipeId]);
+    },[]);
 
     return (
         <>
@@ -79,7 +79,7 @@ const Subrecipe = () => {
                             <h3 className="title-subrecipe">Ingredients</h3>
                             {fullRecipe.extendedIngredients.map((ingredients) => {
                                 return(
-                                    <ul key={ingredients.id} className="list-ingredients">
+                                    <ul key={ingredients.original} className="list-ingredients">
                                         <li>
                                             <p>💚 {ingredients.original}</p>
                                         </li>

@@ -100,7 +100,12 @@ footer {
   border-radius: 10px 0 0 10px;
 }
 
-@media screen and (max-width: 768px) {
+.image-error {
+  margin: 20px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 540px) {
   .image-recipe-decision-fridge{
     width: 215px;
   }
@@ -110,6 +115,13 @@ footer {
 @media screen and (max-width: 450px) {
   .image-recipe-decision-fridge{
     width: 100px;
+    height: 100px;
+  }
+
+  .image-error{
+    margin: 20px;
+    border-radius: 10px;
+    width: 250px;
   }
 
 }

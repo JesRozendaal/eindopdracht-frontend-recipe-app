@@ -42,6 +42,7 @@ const Recipe = () => {
                                 type="button"
                                 name="Next"
                                 onClick={() => setOffset(offset +10)}
+                                disabled={offset === 50}
                             />
                         </div>
 
