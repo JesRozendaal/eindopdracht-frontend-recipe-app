@@ -116,6 +116,7 @@ const LoginRegister = () => {
                                 <Button
                                     type="submit"
                                     name="Log in"
+                                    disabled={!passwordLogin || !userNameLogin}
                                 />
                                 {error &&
                                 <h4>Oops, you entered the wrong data....</h4>
@@ -164,6 +165,7 @@ const LoginRegister = () => {
                                 <Button
                                     type="submit"
                                     name="Register"
+                                    disabled={!userNameRegister || !passwordRegister || !emailRegister}
                                 />
                                 <p className="warning">After you register you have to log in!</p>
 
